@@ -14,6 +14,7 @@ const Company = ({ companyLogo, jobTitle, companyName, location }) => {
             uri: checkImageURL(companyLogo) ? companyLogo : 'https://img.freepik.com/premium-vector/go-startup-logo_8251-75.jpg?w=2000'
           }}
           style={styles.logoImage}
+          resizeMode="contain"
         />
       </View>
 

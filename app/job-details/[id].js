@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from 'react-native';
 import { Stack, useRouter, useSearchParams } from "expo-router";
 import { COLORS, icons, SIZES } from "../../constants";
@@ -22,9 +22,11 @@ const jobDetails = () => {
     const [refreshing, setRefreshing] = useState(false)
     const [activeTab, setActiveTab] = useState(tabs[0])
 
-    const onRefresh = () => {
-
-    }
+    const onRefresh = useCallback(() => {
+        setRefreshing(true)
+        refetch()
+        setRefreshing(false)
+    }, [])
 
     const displayTabContent = () => {
         switch (activeTab) {
